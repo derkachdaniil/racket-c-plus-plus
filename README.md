@@ -1,3 +1,3 @@
 rpp
 ===
-Attempt at making c++ like syntax in racket. still in early development
+Attempt at making c++ like syntax in racket. Still in early development
