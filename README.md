@@ -1,3 +1,3 @@
 rpp
 ===
-README text here.
+Attempt at making c++ like syntax in racket. still in early development
