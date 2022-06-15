@@ -1,4 +1,4 @@
-#lang typed/racket
+#lang racket
 
 (require syntax/parse/define)
 

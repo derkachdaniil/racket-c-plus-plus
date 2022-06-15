@@ -8,7 +8,7 @@ macro: ("expandM" | "afterParse" | "afterParseSkip" | "expandMSkip" | "expandOnc
 
 if_oper : /"if" /"(" @calc-p15 /")" (block | (@operator /";")) [/"else" (block | (@operator /";"))]
 for_oper : for_oper_standart | for_oper_in_range
-for_oper_standart : /"for" /"(" (@c_set | @c_let)/";"  @calc-p15 /";" @operator /")" (block | (@operator /";"))
+for_oper_standart : /"for" /"(" (@c_set | @c_let)/";"  @calc-p15 /";" /NAME /"=" @calc-p15 /")" (block | (@operator /";"))
 for_oper_in_range : /"for" /"(" /"auto" NAME /":" @operator /")" (block | (@operator /";"))
 
 main_ : /"void" /"main" /"(" /")" block
@@ -16,8 +16,8 @@ function : /"void" NAME /"(" NAME (/"," NAME)* /")" block
 c_set_global : NAME /"=" @operator /";"
 
 block : /"{" ( if_oper | @for_oper |  @operator  /";" | NOPARSE )* /"}"
-operator : @calc-p15  | c_print | c_set | c_let | macro
-operand : INTEGER | NAME | simple_list_comp | if_oper | @for_oper |  /"(" @calc-p15 /")"
+operator : @calc-p15  | @c_print | c_set | c_let | macro
+operand : INTEGER | STRING | "endl" | NAME | simple_list_comp | if_oper | @for_oper |  /"(" @calc-p15 /")"
 
 calc-p0 :   @operand 
 calc-p2 :   @unop2 | @calc-p0 
@@ -29,7 +29,7 @@ calc-p10 :  binop10 | @calc-p9
 calc-p14 :  binop14 | @calc-p10
 calc-p15 :  binop15 | @calc-p14
 
-c_let : /"int" NAME /"=" (@operator) 
+c_let : /"auto" NAME /"=" (@operator) 
 c_set : NAME /"=" (@operator)
 
 binop15 : @calc-p15 "||" @calc-p15
@@ -46,6 +46,6 @@ not : (/"!" @calc-p3)
 apply : (@calc-p2 /"(" @calc-p15 (/"," @calc-p15)* /")" )
 index_ : (@calc-p2 /"[" @calc-p15 /"]" )
 
-
-c_print : (/"<"/"<" @calc-p15 | /"print" @calc-p15)
+c_print_intern : /"<"/"<" @calc-p15
+c_print : /"cout" (c_print_intern)*
 dot_placeholder : /"."

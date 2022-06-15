@@ -1,4 +1,4 @@
-#lang typed/racket
+#lang racket
 (require optimization-coach)
 ;try expand-once
 ;try expand-to-top-form
@@ -99,8 +99,12 @@
 (define-syntax-rule (!= x y)
   (not(equal? x y)))
 
-(define-syntax-rule (c_print x)
-  (writeln x))
+(define-syntax c_print_intern
+  (syntax-rules (endl)
+   [(c_print_intern endl) (displayln "")]
+   [(c_print_intern x) (write x)]
+    ))
+
 (define-syntax-rule (% x y)
   (remainder x y))
 (define-syntax-rule (/ x y)
@@ -113,7 +117,8 @@
 (define-syntax-rule (index_ y ...)
   (list-ref y ...))
 (require brag)
-
+(require 2htdp/image)
+(provide (all-from-out 2htdp/image))
 (provide (all-defined-out))
 (provide sqrt)
 (provide + * - > < >= <=)
