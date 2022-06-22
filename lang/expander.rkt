@@ -1,4 +1,6 @@
 #lang racket
+;third block of for is not properly checking the before = stuff
+;break not working
 (require optimization-coach)
 ;try expand-once
 ;try expand-to-top-form
@@ -15,11 +17,11 @@
 
 (define-syntax for_oper_standart
   (syntax-rules ()
-   [(for_oper_standart x1 x2 y z w) (do ([x1 x2 z])((not y)) w )   ]
+   [(for_oper_standart x1 x2 y z w) (do ([x1 x2 z])((not y)) w )]
     ))
 (define-syntax for_oper_in_range
   (syntax-rules ()
-   [(for_oper_in_range x1 x2 y) (for ([x1 x2]) y )   ]
+   [(for_oper_in_range x1 x2 y) (for ([x1 x2]) y )]
     ))
 
 

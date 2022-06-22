@@ -46,6 +46,6 @@ not : (/"!" @calc-p3)
 apply : (@calc-p2 /"(" @calc-p15 (/"," @calc-p15)* /")" )
 index_ : (@calc-p2 /"[" @calc-p15 /"]" )
 
-c_print_intern : /"<"/"<" @calc-p15
+c_print_intern : /"<<" @calc-p15
 c_print : /"cout" (c_print_intern)*
 dot_placeholder : /"."
