@@ -2,7 +2,7 @@
 ;putting /* before */ not working - no proper backtrack
 
 (require brag/support)
-(define-lex-abbrev digits (:+ numeric))
+(define-lex-abbrev digits (:+ numeric "."))
 (define-lex-abbrev letters (:+ (:or alphabetic numeric (char-set "<>=+-*$№/%?_"))))
 (define-lex-abbrev higher-order-reserved-preconverted-terms (:or "==" "!=" "<=" ">=" "&&" "||" "<<"))
 (define-lex-abbrev reserved-preconverted-terms (:or "auto" "int" "for"  "if" "else"  "goto"  "print" "cout" "endl" "void" "main"

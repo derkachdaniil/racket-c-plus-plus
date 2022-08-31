@@ -38,10 +38,11 @@ binop10 : @calc-p10 ("==" | "!=") @calc-p10
 binop9 : @calc-p9 (">" | "<" | ">=" | "<=") @calc-p9
 binop6 : @calc-p6 ("+" | "-") @calc-p6
 binop5 : @calc-p5 ("%" | "*" | "/") @calc-p5
-unop3 :  not 
+unop3 :  not | unary_minus
 unop2 :  apply | index_
 
 not : (/"!" @calc-p3)
+unary_minus : (/"-" @calc-p3)
 
 apply : (@calc-p2 /"(" @calc-p15 (/"," @calc-p15)* /")" )
 index_ : (@calc-p2 /"[" @calc-p15 /"]" )

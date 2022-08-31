@@ -113,7 +113,8 @@
   (quotient x y))
 (define-syntax-rule (c_set_global x y )
   (define x y))
-
+(define-syntax-rule (unary_minus x)
+  (- 0 x))
 (define-syntax-rule (apply x ...)
   (x ...))
 (define-syntax-rule (index_ y ...)
@@ -123,4 +124,5 @@
 (provide (all-from-out 2htdp/image))
 (provide (all-defined-out))
 (provide sqrt)
+(provide list)
 (provide + * - > < >= <=)
